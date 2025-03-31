@@ -6,7 +6,7 @@ const tweetController = new TweetController();
 class TweetHttpHandler {
   async getTweets(request: Request, response: Response, next: NextFunction){
     try {
-      const tweets = await tweetController.getAllTweets();
+      const tweets = await tweetController.getAllTweets;
       response.json(tweets)
     } catch (error){
       next(error)

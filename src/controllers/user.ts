@@ -1,8 +1,16 @@
+import { Request, Response, NextFunction } from "express";
+import UserDataBase from "../db/user";
+
+const userDataBase = new UserDataBase();
 class UserController {
 
-  async getAllUsers(){
-    return [10,9,8,7,6,5,4,3,2,1]
-
+  async getAllUsers(request: Request, response: Response, next: NextFunction){
+    try {
+      const users = await userDataBase.getAllUsers();
+      response.json(users)
+    } catch (error){
+      next(error)
+    }
   }
 }
 

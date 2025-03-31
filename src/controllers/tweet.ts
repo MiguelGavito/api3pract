@@ -1,8 +1,17 @@
+import { Request, Response, NextFunction } from "express";
+import TweetDataBase from "../db/tweet";
+
+const tweetDataBase = new TweetDataBase();
+
 class TweetController {
 
-  async getAllTweets(){
-    return [1,2,3,4,5,6,7,8,9,10]
-
+  async getAllTweets(request: Request, response: Response, next: NextFunction){
+    try {
+      const tweets = await tweetDataBase.getAllTweets();
+      response.json(tweets)
+    } catch (error){
+      next(error)
+    }
   }
 }
 
