@@ -7,7 +7,7 @@ const userHttpHandler = new UserHttpHandler();
 
 router.get('/', userHttpHandler.getUsers);
 router.get('/:id', userHttpHandler.getUserById);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+router.put('/:id', userHttpHandler.updateUser);
+router.delete('/:id', userHttpHandler.deleteUser);
 
 export default router;
